@@ -3,6 +3,10 @@
     src: url("sf-pro-text-regular.woff");
 }
 
+* {
+    box-sizing: border-box;
+}
+
 body {
     font-family: SF;
     font-size: 24px;
@@ -11,6 +15,7 @@ body {
 }
 
 .app {
+    max-width: 1000px;
     margin: 0 auto;
 }
 
@@ -18,8 +23,7 @@ body {
     display: flex;
     align-items: center;
     width: fit-content;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 30px auto;
 }
 
 .income,
@@ -39,6 +43,19 @@ body {
 
 .expenses {
     color: #ff4004;
+}
+
+.form-entry {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-entry > div {
+    flex: 1;
+}
+
+.form-entry-amount {
+    width: 75px;
 }
 
 @media (max-width: 900px) {
