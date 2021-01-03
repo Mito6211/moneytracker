@@ -3,26 +3,14 @@ import Arrow from "./Arrow";
 
 import "./App.css";
 
+const defaultFormData = {
+    entryName: "",
+    entryType: "cash",
+    entryIsIncome: true,
+    entryAmount: "",
+};
+
 function App() {
-    const [formData, setFormData] = useState({
-        entryName: "",
-        entryType: "cash",
-        entryIncomeOrExpense: "income",
-        entryAmount: "",
-    });
-
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-        setFormData((prev) => ({
-            ...prev,
-            [name]: value,
-        }));
-    };
-
-    React.useEffect(() => {
-        console.log(formData);
-    }, [formData]);
-
     const [entries, setEntries] = useState([
         {
             id: 1,
@@ -54,6 +42,39 @@ function App() {
         },
     ]);
 
+    const [formData, setFormData] = useState(defaultFormData);
+
+    const handleChange = (e) => {
+        let { name, value } = e.target;
+        if (name === "entryIsIncome") value = value === "true" ? true : false;
+        setFormData((prev) => ({
+            ...prev,
+            [name]: value,
+        }));
+    };
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        for (const item in formData) {
+            if (formData[item] === "") return;
+        }
+        setEntries((prev) => [
+            ...prev,
+            {
+                id: 5,
+                name: formData.entryName,
+                amount: parseFloat(formData.entryAmount),
+                type: formData.entryType,
+                isIncome: formData.entryIsIncome,
+            },
+        ]);
+        setFormData(defaultFormData);
+    };
+
+    React.useEffect(() => {
+        console.log(formData);
+    }, [formData]);
+
     return (
         <div className="app">
             <div className="top-money-display">
@@ -75,7 +96,7 @@ function App() {
                         )}
                 </span>
             </div>
-            <form className="form-entry">
+            <form className="form-entry" onSubmit={handleSubmit}>
                 <div>
                     <input
                         type="text"
@@ -107,12 +128,12 @@ function App() {
                     </select>
                     <select
                         className="form-entry-select"
-                        name="entryIncomeOrExpense"
-                        value={formData.entryIncomeOrExpense}
+                        name="entryIsIncome"
+                        value={formData.entryIsIncome}
                         onChange={handleChange}
                     >
-                        <option value="income">Income</option>
-                        <option value="expense">Expense</option>
+                        <option value={true}>Income</option>
+                        <option value={false}>Expense</option>
                     </select>
                     <button>Add</button>
                 </div>
