@@ -10,43 +10,47 @@ const defaultFormData = {
     entryAmount: "",
 };
 
-function App() {
-    const [entries, setEntries] = useState([
-        {
-            id: 1,
-            name: "Mortgage Payment",
-            amount: 2500,
-            type: "bankAccount",
-            isIncome: false,
-        },
-        {
-            id: 2,
-            name: "Paycheck",
-            amount: 3400,
-            type: "bankAccount",
-            isIncome: true,
-        },
-        {
-            id: 3,
-            name: "Groceries",
-            amount: 150,
-            type: "cash",
-            isIncome: false,
-        },
-        {
-            id: 4,
-            name: "Sold Phone",
-            amount: 500,
-            type: "cash",
-            isIncome: true,
-        },
-    ]);
+const defaultEntries = [
+    {
+        id: 1,
+        name: "Mortgage Payment",
+        amount: 2500,
+        type: "bankAccount",
+        isIncome: false,
+    },
+    {
+        id: 2,
+        name: "Paycheck",
+        amount: 3400,
+        type: "bankAccount",
+        isIncome: true,
+    },
+    {
+        id: 3,
+        name: "Groceries",
+        amount: 150,
+        type: "cash",
+        isIncome: false,
+    },
+    {
+        id: 4,
+        name: "Sold Phone",
+        amount: 500,
+        type: "cash",
+        isIncome: true,
+    },
+];
 
+function App() {
+    const [entries, setEntries] = useState(defaultEntries);
     const [formData, setFormData] = useState(defaultFormData);
 
     const handleChange = (e) => {
         let { name, value } = e.target;
-        if (name === "entryIsIncome") value = value === "true" ? true : false;
+        if (name === "entryIsIncome") {
+            value = value === "true" ? true : false;
+        }
+
         setFormData((prev) => ({
             ...prev,
             [name]: value,
@@ -70,10 +74,6 @@ function App() {
         ]);
         setFormData(defaultFormData);
     };
-
-    React.useEffect(() => {
-        console.log(formData);
-    }, [formData]);
 
     return (
         <div className="app">
@@ -124,6 +124,7 @@ function App() {
                     >
                         <option value="cash">Cash</option>
                         <option value="bankAccount">Bank Account</option>
+                        <option value="crypto">Crypto</option>
                         <option value="giftCard">Gift Card</option>
                     </select>
                     <select
