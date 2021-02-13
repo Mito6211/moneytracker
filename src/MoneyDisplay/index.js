@@ -1,7 +1,7 @@
 import React from "react";
-import Arrow from "./Arrow";
+import Arrow from "../Arrow";
 
-import "./MoneyDisplay.css";
+import "./index.css";
 
 export default function MoneyDisplay({ entries }) {
   return (

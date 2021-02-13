@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import { defaultFormData } from "./constants";
+import { nanoid } from "nanoid";
+import { defaultFormData } from "../constants";
 
-import "./EntryForm.css";
+import "./index.css";
 
 export default function EntryForm({ setEntries }) {
   const [formData, setFormData] = useState(defaultFormData);
@@ -26,7 +27,7 @@ export default function EntryForm({ setEntries }) {
     setEntries((prev) => [
       ...prev,
       {
-        id: 5,
+        id: nanoid(),
         name: formData.entryName,
         amount: parseFloat(formData.entryAmount),
         type: formData.entryType,

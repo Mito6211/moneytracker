@@ -1,13 +1,19 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { defaultEntries } from "./constants";
+import { getFromStorage, saveToStorage } from "./storage";
 import MoneyDisplay from "./MoneyDisplay";
 import EntryForm from "./EntryForm";
 
 import "./App.css";
 
 function App() {
-  const [entries, setEntries] = useState(defaultEntries);
+  const [entries, setEntries] = useState(
+    getFromStorage("entries") || defaultEntries
+  );
 
+  useEffect(() => {
+    saveToStorage("entries", entries);
+  }, [entries]);
   return (
     <div className="app">
       <MoneyDisplay entries={entries} />
