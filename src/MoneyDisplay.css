@@ -1,0 +1,36 @@
+.top-money-display {
+  display: flex;
+  align-items: center;
+  width: fit-content;
+  margin: 30px auto;
+}
+
+.income,
+.total,
+.expenses {
+  margin: 0px 20px;
+  font-size: 2rem;
+}
+
+.income {
+  color: #69e04c;
+}
+
+.total {
+  font-size: 5rem;
+}
+
+.expenses {
+  color: #ff4004;
+}
+
+@media (max-width: 900px) {
+  .top-money-display {
+    flex-direction: column;
+  }
+
+  .arrow {
+    transform: rotate(90deg);
+    margin: 20px;
+  }
+}
