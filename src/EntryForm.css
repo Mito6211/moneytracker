@@ -1,0 +1,12 @@
+.form-entry {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-entry > div {
+  flex: 1;
+}
+
+.form-entry-amount {
+  width: 75px;
+}

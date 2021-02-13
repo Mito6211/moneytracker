@@ -28,3 +28,10 @@ export const defaultEntries = [
     isIncome: true,
   },
 ];
+
+export const defaultFormData = {
+  entryName: "",
+  entryType: "cash",
+  entryIsIncome: true,
+  entryAmount: "",
+};
