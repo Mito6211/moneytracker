@@ -13,15 +13,22 @@ const App: React.FC = () => {
   const [entries, setEntries] = useState<Entry[]>(
     getFromStorage("entries") || defaultEntries
   );
+  const [startingAmount, setStartingAmount] = useState<number>(
+    getFromStorage("startingAmount") || 0
+  );
 
   useEffect(() => {
     saveToStorage("entries", entries);
-  }, [entries]);
+    saveToStorage("startingAmount", startingAmount);
+  }, [entries, startingAmount]);
 
   return (
     <div className="app">
-      <MoneyDisplay entries={entries} />
-      <EntryForm setEntries={setEntries} />
+      <MoneyDisplay entries={entries} startingAmount={startingAmount} />
+      <EntryForm
+        setEntries={setEntries}
+        setStartingAmount={setStartingAmount}
+      />
       <EntryList entries={entries} setEntries={setEntries} />
     </div>
   );

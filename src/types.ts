@@ -11,4 +11,5 @@ export type EntryFormData = {
   entryType: string;
   entryIsIncome: boolean;
   entryAmount: string;
+  startingAmount: string;
 };

@@ -26,7 +26,7 @@ const MoneyDisplay: React.FC<Props> = ({ entries, startingAmount = 0 }) => {
       <span className="income stroke-text">{"$" + income}</span>
       <Arrow />
       <span className="total stroke-text">
-        {(total < 0 ? "-$" : "$") + Math.abs(total)}
+        {(total < 0 ? "-$" : "$") + Math.abs(total).toFixed(2)}
       </span>
       <Arrow />
       <span className="expenses stroke-text">{"$" + expenses}</span>

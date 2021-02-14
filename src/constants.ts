@@ -37,4 +37,5 @@ export const defaultFormData: EntryFormData = {
   entryType: "Cash",
   entryIsIncome: true,
   entryAmount: "",
+  startingAmount: "0",
 };
