@@ -3,7 +3,17 @@ import Arrow from "../Arrow";
 
 import "./index.css";
 
-export default function MoneyDisplay({ entries }) {
+type Props = {
+  entries: {
+    id: string;
+    name: string;
+    amount: number;
+    type: string;
+    isIncome: boolean;
+  }[];
+};
+
+export default function MoneyDisplay({ entries }: Props) {
   return (
     <div className="top-money-display">
       <span className="income stroke-text">

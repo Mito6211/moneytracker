@@ -1,13 +1,24 @@
 import React, { useState } from "react";
 import { nanoid } from "nanoid";
-import { defaultFormData } from "../constants";
+import { defaultFormData } from "../../constants";
 
 import "./index.css";
 
-export default function EntryForm({ setEntries }) {
-  const [formData, setFormData] = useState(defaultFormData);
+type Props = {
+  setEntries: React.Dispatch<any>;
+};
 
-  const handleChange = (e) => {
+interface FormData {
+  entryName: string;
+  entryType: string;
+  entryIsIncome: boolean;
+  entryAmount: string;
+}
+
+export default function EntryForm({ setEntries }: Props) {
+  const [formData, setFormData] = useState<FormData>(defaultFormData);
+
+  const handleChange = (e: any) => {
     let { name, value } = e.target;
     if (name === "entryIsIncome") {
       value = value === "true" ? true : false;
@@ -19,12 +30,12 @@ export default function EntryForm({ setEntries }) {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: any) => {
     e.preventDefault();
     for (const item in formData) {
-      if (formData[item] === "") return;
+      if (item === "") return;
     }
-    setEntries((prev) => [
+    setEntries((prev: any) => [
       ...prev,
       {
         id: nanoid(),
@@ -36,6 +47,7 @@ export default function EntryForm({ setEntries }) {
     ]);
     setFormData(defaultFormData);
   };
+
   return (
     <form className="form-entry" onSubmit={handleSubmit}>
       <div>
@@ -71,11 +83,11 @@ export default function EntryForm({ setEntries }) {
         <select
           className="form-entry-select"
           name="entryIsIncome"
-          value={formData.entryIsIncome}
+          value={formData.entryIsIncome.toString()}
           onChange={handleChange}
         >
-          <option value={true}>Income</option>
-          <option value={false}>Expense</option>
+          <option value="true">Income</option>
+          <option value="false">Expense</option>
         </select>
         <button>Add</button>
       </div>
