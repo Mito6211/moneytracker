@@ -2,10 +2,10 @@ import React from "react";
 
 import "./index.scss";
 
-import { Entries } from "../../types";
+import { Entry } from "../../types";
 
 type Props = {
-  entries: Entries;
+  entries: Entry[];
 };
 
 const MoneyDisplay: React.FC<Props> = ({ entries }) => {
@@ -15,8 +15,9 @@ const MoneyDisplay: React.FC<Props> = ({ entries }) => {
         <div key={entry.id}>
           {entry.name} -{" "}
           <span className={entry.isIncome ? "green" : "red"}>
-            ${entry.amount} <span className="small">({entry.type})</span>
-          </span>
+            ${entry.amount}
+          </span>{" "}
+          <span className="small">({entry.type})</span>
         </div>
       ))}
     </div>

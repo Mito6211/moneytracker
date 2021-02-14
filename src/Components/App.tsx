@@ -7,10 +7,10 @@ import EntryList from "./EntryList";
 
 import "./App.css";
 
-import { Entries } from "../types";
+import { Entry } from "../types";
 
 const App: React.FC = () => {
-  const [entries, setEntries] = useState<Entries>(
+  const [entries, setEntries] = useState<Entry[]>(
     getFromStorage("entries") || defaultEntries
   );
 
