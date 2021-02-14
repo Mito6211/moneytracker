@@ -6,9 +6,10 @@ import "./index.scss";
 
 type Props = {
   entries: Entry[];
+  startingAmount?: number;
 };
 
-const MoneyDisplay: React.FC<Props> = ({ entries }) => {
+const MoneyDisplay: React.FC<Props> = ({ entries, startingAmount = 0 }) => {
   const income: number = entries.reduce(
     (acc, cur) => acc + (cur.isIncome ? cur.amount : 0),
     0
@@ -18,7 +19,7 @@ const MoneyDisplay: React.FC<Props> = ({ entries }) => {
     0
   );
 
-  const total: number = income - expenses;
+  const total: number = startingAmount + (income - expenses);
 
   return (
     <div className="top-money-display">
