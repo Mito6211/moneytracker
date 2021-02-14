@@ -1,5 +1,16 @@
 @import "../../styles/variables.scss";
 
+.entry-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.entry-list > * {
+  display: flex;
+  align-items: center;
+  margin-top: 12px;
+}
+
 .green {
   color: $green;
 }
@@ -10,4 +21,9 @@
 
 .small {
   font-size: 0.5em;
+}
+
+.remove {
+  cursor: pointer;
+  margin-right: 12px;
 }

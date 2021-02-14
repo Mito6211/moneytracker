@@ -22,7 +22,7 @@ const App: React.FC = () => {
     <div className="app">
       <MoneyDisplay entries={entries} />
       <EntryForm setEntries={setEntries} />
-      <EntryList entries={entries} />
+      <EntryList entries={entries} setEntries={setEntries} />
     </div>
   );
 };
