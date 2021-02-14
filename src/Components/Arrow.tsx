@@ -1,4 +1,6 @@
-const Arrow = () => (
+import React from "react";
+
+const Arrow: React.FC = () => (
   <svg
     className="arrow"
     width="34"

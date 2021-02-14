@@ -6,7 +6,7 @@ import EntryForm from "./EntryForm";
 
 import "./App.css";
 
-function App() {
+const App: React.FC = () => {
   const [entries, setEntries] = useState(
     getFromStorage("entries") || defaultEntries
   );
@@ -14,12 +14,13 @@ function App() {
   useEffect(() => {
     saveToStorage("entries", entries);
   }, [entries]);
+
   return (
     <div className="app">
       <MoneyDisplay entries={entries} />
       <EntryForm setEntries={setEntries} />
     </div>
   );
-}
+};
 
 export default App;

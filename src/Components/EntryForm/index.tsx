@@ -15,7 +15,7 @@ interface FormData {
   entryAmount: string;
 }
 
-export default function EntryForm({ setEntries }: Props) {
+const EntryForm: React.FC<Props> = ({ setEntries }: Props) => {
   const [formData, setFormData] = useState<FormData>(defaultFormData);
 
   const handleChange = (e: any) => {
@@ -93,4 +93,6 @@ export default function EntryForm({ setEntries }: Props) {
       </div>
     </form>
   );
-}
+};
+
+export default EntryForm;

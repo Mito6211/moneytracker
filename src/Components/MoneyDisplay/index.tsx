@@ -13,7 +13,7 @@ type Props = {
   }[];
 };
 
-export default function MoneyDisplay({ entries }: Props) {
+const MoneyDisplay: React.FC<Props> = ({ entries }: Props) => {
   return (
     <div className="top-money-display">
       <span className="income stroke-text">
@@ -35,4 +35,6 @@ export default function MoneyDisplay({ entries }: Props) {
       </span>
     </div>
   );
-}
+};
+
+export default MoneyDisplay;
