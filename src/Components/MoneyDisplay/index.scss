@@ -26,6 +26,10 @@
   color: $red;
 }
 
+.arrow {
+  fill: $text;
+}
+
 @media (max-width: 900px) {
   .top-money-display {
     flex-direction: column;

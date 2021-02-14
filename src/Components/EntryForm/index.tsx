@@ -4,19 +4,14 @@ import { defaultFormData } from "../../constants";
 
 import "./index.css";
 
-type FormData = {
-  entryName: string;
-  entryType: string;
-  entryIsIncome: boolean;
-  entryAmount: string;
-};
+import { EntryFormData } from "../../types";
 
 type Props = {
   setEntries: React.Dispatch<any>;
 };
 
 const EntryForm: React.FC<Props> = ({ setEntries }) => {
-  const [formData, setFormData] = useState<FormData>(defaultFormData);
+  const [formData, setFormData] = useState<EntryFormData>(defaultFormData);
 
   const handleChange = (e: any) => {
     let { name, value } = e.target;

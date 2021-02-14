@@ -5,7 +5,7 @@ import MoneyDisplay from "./MoneyDisplay";
 import EntryForm from "./EntryForm";
 import EntryList from "./EntryList";
 
-import "./App.css";
+import "./App.scss";
 
 import { Entry } from "../types";
 

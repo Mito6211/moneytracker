@@ -1,6 +1,7 @@
 import { nanoid } from "nanoid";
+import { Entry, EntryFormData } from "./types";
 
-export const defaultEntries = [
+export const defaultEntries: Entry[] = [
   {
     id: nanoid(),
     name: "Mortgage Payment",
@@ -31,7 +32,7 @@ export const defaultEntries = [
   },
 ];
 
-export const defaultFormData = {
+export const defaultFormData: EntryFormData = {
   entryName: "",
   entryType: "cash",
   entryIsIncome: true,

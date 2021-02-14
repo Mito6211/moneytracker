@@ -5,3 +5,10 @@ export type Entry = {
   type: string;
   isIncome: boolean;
 };
+
+export type EntryFormData = {
+  entryName: string;
+  entryType: string;
+  entryIsIncome: boolean;
+  entryAmount: string;
+};
