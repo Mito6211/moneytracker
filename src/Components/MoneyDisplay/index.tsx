@@ -2,7 +2,7 @@ import React from "react";
 import Arrow from "./Arrow";
 
 import { Entries } from "../../types";
-import "./index.css";
+import "./index.scss";
 
 type Props = {
   entries: Entries;

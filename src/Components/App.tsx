@@ -3,6 +3,7 @@ import { defaultEntries } from "../constants";
 import { getFromStorage, saveToStorage } from "../storage";
 import MoneyDisplay from "./MoneyDisplay";
 import EntryForm from "./EntryForm";
+import EntryList from "./EntryList";
 
 import "./App.css";
 
@@ -21,6 +22,7 @@ const App: React.FC = () => {
     <div className="app">
       <MoneyDisplay entries={entries} />
       <EntryForm setEntries={setEntries} />
+      <EntryList entries={entries} />
     </div>
   );
 };
