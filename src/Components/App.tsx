@@ -13,6 +13,7 @@ const App: React.FC = () => {
   const [entries, setEntries] = useState<Entry[]>(
     getFromStorage("entries") || defaultEntries
   );
+  console.log(getFromStorage("startingAmount"));
   const [startingAmount, setStartingAmount] = useState<number>(
     getFromStorage("startingAmount") || 0
   );
