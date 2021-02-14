@@ -4,18 +4,18 @@ import { defaultFormData } from "../../constants";
 
 import "./index.css";
 
-type Props = {
-  setEntries: React.Dispatch<any>;
-};
-
-interface FormData {
+type FormData = {
   entryName: string;
   entryType: string;
   entryIsIncome: boolean;
   entryAmount: string;
-}
+};
 
-const EntryForm: React.FC<Props> = ({ setEntries }: Props) => {
+type Props = {
+  setEntries: React.Dispatch<any>;
+};
+
+const EntryForm: React.FC<Props> = ({ setEntries }) => {
   const [formData, setFormData] = useState<FormData>(defaultFormData);
 
   const handleChange = (e: any) => {

@@ -1,19 +1,14 @@
 import React from "react";
-import Arrow from "../Arrow";
+import Arrow from "./Arrow";
 
+import { Entries } from "../../types";
 import "./index.css";
 
 type Props = {
-  entries: {
-    id: string;
-    name: string;
-    amount: number;
-    type: string;
-    isIncome: boolean;
-  }[];
+  entries: Entries;
 };
 
-const MoneyDisplay: React.FC<Props> = ({ entries }: Props) => {
+const MoneyDisplay: React.FC<Props> = ({ entries }) => {
   return (
     <div className="top-money-display">
       <span className="income stroke-text">

@@ -6,8 +6,10 @@ import EntryForm from "./EntryForm";
 
 import "./App.css";
 
+import { Entries } from "../types";
+
 const App: React.FC = () => {
-  const [entries, setEntries] = useState(
+  const [entries, setEntries] = useState<Entries>(
     getFromStorage("entries") || defaultEntries
   );
 
