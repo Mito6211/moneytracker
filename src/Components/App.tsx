@@ -20,7 +20,7 @@ const App: React.FC = () => {
 
   return (
     <div className="app">
-      <MoneyDisplay entries={entries} startingAmount={500} />
+      <MoneyDisplay entries={entries} />
       <EntryForm setEntries={setEntries} />
       <EntryList entries={entries} setEntries={setEntries} />
     </div>
