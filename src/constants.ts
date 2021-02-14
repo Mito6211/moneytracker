@@ -6,35 +6,35 @@ export const defaultEntries: Entry[] = [
     id: nanoid(),
     name: "Mortgage Payment",
     amount: 2500,
-    type: "bankAccount",
+    type: "Bank Account",
     isIncome: false,
   },
   {
     id: nanoid(),
     name: "Pay Check",
     amount: 3400,
-    type: "bankAccount",
+    type: "Bank Account",
     isIncome: true,
   },
   {
     id: nanoid(),
     name: "Groceries",
     amount: 150,
-    type: "cash",
+    type: "Cash",
     isIncome: false,
   },
   {
     id: nanoid(),
     name: "Sold Phone",
     amount: 500,
-    type: "cash",
+    type: "Cash",
     isIncome: true,
   },
 ];
 
 export const defaultFormData: EntryFormData = {
   entryName: "",
-  entryType: "cash",
+  entryType: "Cash",
   entryIsIncome: true,
   entryAmount: "",
 };

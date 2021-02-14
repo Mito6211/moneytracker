@@ -70,10 +70,10 @@ const EntryForm: React.FC<Props> = ({ setEntries }) => {
           value={formData.entryType}
           onChange={handleChange}
         >
-          <option value="cash">Cash</option>
-          <option value="bankAccount">Bank Account</option>
-          <option value="crypto">Crypto</option>
-          <option value="giftCard">Gift Card</option>
+          <option value="Cash">Cash</option>
+          <option value="Bank Account">Bank Account</option>
+          <option value="Crypto">Crypto</option>
+          <option value="Gift Card">Gift Card</option>
         </select>
         <select
           className="form-entry-select"
