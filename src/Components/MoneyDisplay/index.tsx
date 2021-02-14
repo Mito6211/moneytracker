@@ -9,25 +9,26 @@ type Props = {
 };
 
 const MoneyDisplay: React.FC<Props> = ({ entries }) => {
+  const income: number = entries.reduce(
+    (acc, cur) => acc + (cur.isIncome ? cur.amount : 0),
+    0
+  );
+  const expenses: number = entries.reduce(
+    (acc, cur) => acc + (cur.isIncome ? 0 : cur.amount),
+    0
+  );
+
+  const total: number = income - expenses;
+
   return (
     <div className="top-money-display">
-      <span className="income stroke-text">
-        {"$" +
-          entries.reduce(
-            (acc, cur) => acc + (cur.isIncome ? cur.amount : 0),
-            0
-          )}
+      <span className="income stroke-text">{"$" + income}</span>
+      <Arrow />
+      <span className="total stroke-text">
+        {(total < 0 ? "-$" : "$") + Math.abs(total)}
       </span>
       <Arrow />
-      <span className="total stroke-text">$15000</span>
-      <Arrow />
-      <span className="expenses stroke-text">
-        {"$" +
-          entries.reduce(
-            (acc, cur) => acc + (cur.isIncome ? 0 : cur.amount),
-            0
-          )}
-      </span>
+      <span className="expenses stroke-text">{"$" + expenses}</span>
     </div>
   );
 };
