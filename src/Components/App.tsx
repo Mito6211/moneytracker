@@ -36,7 +36,7 @@ const App: React.FC = () => {
           <EntryList entries={entries} setEntries={setEntries} />
         </Route>
         <Route path="/edit/:id">
-          <EditEntry />
+          <EditEntry entries={entries} />
         </Route>
       </Switch>
     </div>
