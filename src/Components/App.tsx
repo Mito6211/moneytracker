@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, useParams } from "react-router-dom";
 import { defaultEntries } from "../constants";
 import { getFromStorage, saveToStorage } from "../storage";
 import MoneyDisplay from "./MoneyDisplay";
 import EntryForm from "./EntryForm";
 import EntryList from "./EntryList";
+import EditEntry from "./EditEntry";
 
 import "./App.scss";
 
@@ -35,7 +36,7 @@ const App: React.FC = () => {
           <EntryList entries={entries} setEntries={setEntries} />
         </Route>
         <Route path="/edit/:id">
-          <h1>TESTING</h1>
+          <EditEntry />
         </Route>
       </Switch>
     </div>
