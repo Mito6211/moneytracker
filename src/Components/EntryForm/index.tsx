@@ -41,6 +41,7 @@ const EntryForm: React.FC<Props> = ({ setEntries, setStartingAmount }) => {
         amount: parseFloat(formData.entryAmount),
         type: formData.entryType,
         isIncome: formData.entryIsIncome,
+        dateAdded: new Date().getTime(),
       },
     ]);
     setFormData(defaultFormData);

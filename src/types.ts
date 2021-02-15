@@ -4,6 +4,7 @@ export type Entry = {
   amount: number;
   type: string;
   isIncome: boolean;
+  dateAdded: number;
 };
 
 export type EntryFormData = {

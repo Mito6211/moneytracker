@@ -8,6 +8,7 @@ export const defaultEntries: Entry[] = [
     amount: 2500,
     type: "Bank Account",
     isIncome: false,
+    dateAdded: 1612222200000,
   },
   {
     id: nanoid(),
@@ -15,6 +16,7 @@ export const defaultEntries: Entry[] = [
     amount: 3400,
     type: "Bank Account",
     isIncome: true,
+    dateAdded: 1613409300000,
   },
   {
     id: nanoid(),
@@ -22,6 +24,7 @@ export const defaultEntries: Entry[] = [
     amount: 150,
     type: "Cash",
     isIncome: false,
+    dateAdded: 1613483100000,
   },
   {
     id: nanoid(),
@@ -29,6 +32,7 @@ export const defaultEntries: Entry[] = [
     amount: 500,
     type: "Cash",
     isIncome: true,
+    dateAdded: 1614354600000,
   },
 ];
 
