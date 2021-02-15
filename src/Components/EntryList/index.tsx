@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { MdClose } from "react-icons/md";
 import { abbreviateMoney } from "../../utils";
 
@@ -22,7 +23,12 @@ const MoneyDisplay: React.FC<Props> = ({ entries, setEntries }) => {
       {entries.map((entry) => (
         <div key={entry.id}>
           <MdClose className="remove" onClick={() => removeEntry(entry.id)} />
-          {entry.name}
+          <Link
+            to={`/edit/${entry.id}`}
+            style={{ all: "unset", color: "inherit", cursor: "pointer" }}
+          >
+            {entry.name}
+          </Link>
           &nbsp;-&nbsp;
           <span className={entry.isIncome ? "green" : "red"}>
             ${abbreviateMoney(entry.amount)}

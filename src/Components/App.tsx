@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Route, Switch } from "react-router-dom";
 import { defaultEntries } from "../constants";
 import { getFromStorage, saveToStorage } from "../storage";
 import MoneyDisplay from "./MoneyDisplay";
@@ -13,7 +14,6 @@ const App: React.FC = () => {
   const [entries, setEntries] = useState<Entry[]>(
     getFromStorage("entries") || defaultEntries
   );
-  console.log(getFromStorage("startingAmount"));
   const [startingAmount, setStartingAmount] = useState<number>(
     getFromStorage("startingAmount") || 0
   );
@@ -26,11 +26,18 @@ const App: React.FC = () => {
   return (
     <div className="app">
       <MoneyDisplay entries={entries} startingAmount={startingAmount} />
-      <EntryForm
-        setEntries={setEntries}
-        setStartingAmount={setStartingAmount}
-      />
-      <EntryList entries={entries} setEntries={setEntries} />
+      <Switch>
+        <Route exact path="/">
+          <EntryForm
+            setEntries={setEntries}
+            setStartingAmount={setStartingAmount}
+          />
+          <EntryList entries={entries} setEntries={setEntries} />
+        </Route>
+        <Route path="/edit/:id">
+          <h1>TESTING</h1>
+        </Route>
+      </Switch>
     </div>
   );
 };
