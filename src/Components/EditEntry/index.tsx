@@ -12,17 +12,15 @@ import AmountInput from "../EntryForm/AmountInput";
 
 type Props = {
   entries: Entry[];
-  setEntries: React.Dispatch<any>;
+  setEntries: React.Dispatch<Entry[]>;
 };
+
 const EditEntry: React.FC<Props> = ({ entries, setEntries }) => {
   const history = useHistory();
   const { id } = useParams<{ id: string }>();
-  let error;
 
   const selectedEntryIndex = entries.findIndex((entry) => entry.id === id);
-  if (selectedEntryIndex === -1) {
-    error = true;
-  }
+  const error = selectedEntryIndex === -1;
 
   const selectedEntry = entries[selectedEntryIndex];
 
@@ -37,8 +35,10 @@ const EditEntry: React.FC<Props> = ({ entries, setEntries }) => {
         }
   );
 
-  const handleChange = (e: any) => {
-    let { name, value } = e.target;
+  const handleChange = (e: React.ChangeEvent<any>) => {
+    const { name, value: possibleValue } = e.target;
+    let value: string | boolean = possibleValue;
+
     if (name === "entryIsIncome") {
       value = value === "true" ? true : false;
     }
@@ -77,13 +77,13 @@ const EditEntry: React.FC<Props> = ({ entries, setEntries }) => {
               alignItems: "center",
             }}
           >
-            <span>{selectedEntry?.name}</span>
+            <span>{selectedEntry.name}</span>
             &nbsp;-&nbsp;
-            <span className={selectedEntry?.isIncome ? "green" : "red"}>
-              ${abbreviateMoney(selectedEntry!.amount)}
+            <span className={selectedEntry.isIncome ? "green" : "red"}>
+              ${abbreviateMoney(selectedEntry.amount)}
             </span>
             &nbsp;
-            <span className="small">({selectedEntry?.type})</span>
+            <span className="small">({selectedEntry.type})</span>
           </h2>
           <NameInput value={entryData.entryName} handleChange={handleChange} />
           <AmountInput

@@ -32,22 +32,22 @@ const EntryForm: React.FC<Props> = ({ setEntries, setStartingAmount }) => {
     }));
   };
 
-  const handleSubmit = (e: any) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     for (const item in formData) {
       if (item === "") return;
     }
-    setEntries((prev: Entry[]) => [
-      ...prev,
-      {
-        id: nanoid(),
-        name: formData.entryName,
-        amount: parseFloat(formData.entryAmount),
-        type: formData.entryType,
-        isIncome: formData.entryIsIncome,
-        dateAdded: new Date().getTime(),
-      },
-    ]);
+
+    const newEntry: Entry = {
+      id: nanoid(),
+      name: formData.entryName,
+      amount: parseFloat(formData.entryAmount),
+      type: formData.entryType,
+      isIncome: formData.entryIsIncome,
+      dateAdded: new Date().getTime(),
+    };
+
+    setEntries((prev: Entry[]) => [...prev, newEntry]);
     setFormData(defaultFormData);
   };
 

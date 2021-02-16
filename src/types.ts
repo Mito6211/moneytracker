@@ -17,5 +17,9 @@ export type EntryFormData = {
 
 export type EntryFormProps = {
   value: string | boolean;
-  handleChange: (e: any) => void;
+  handleChange: (
+    e:
+      | React.FormEvent<HTMLFormElement>
+      | React.ChangeEvent<HTMLSelectElement | HTMLInputElement>
+  ) => void;
 };
