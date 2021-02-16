@@ -11,11 +11,13 @@ import AmountInput from "../EntryForm/AmountInput";
 
 type Props = {
   entries: Entry[];
+  setEntries: React.Dispatch<any>;
 };
-const EditEntry: React.FC<Props> = ({ entries }) => {
+const EditEntry: React.FC<Props> = ({ entries, setEntries }) => {
   const { id } = useParams<{ id: string }>();
 
-  const selectedEntry = entries.find((entry) => entry.id === id);
+  const selectedEntryIndex = entries.findIndex((entry) => entry.id === id);
+  const selectedEntry = entries[selectedEntryIndex];
 
   const [entryData, setEntryData] = useState<EntryFormData>({
     entryName: selectedEntry?.name!,
@@ -36,6 +38,18 @@ const EditEntry: React.FC<Props> = ({ entries }) => {
       ...prev,
       [name]: value,
     }));
+  };
+
+  const handleSave = () => {
+    const newEntries = [...entries];
+    newEntries[selectedEntryIndex] = {
+      ...newEntries[selectedEntryIndex],
+      name: entryData.entryName,
+      amount: Number(entryData.entryAmount),
+      type: entryData.entryType,
+      isIncome: entryData.entryIsIncome,
+    };
+    setEntries(newEntries);
   };
 
   return (
@@ -63,12 +77,7 @@ const EditEntry: React.FC<Props> = ({ entries }) => {
         value={entryData.entryIsIncome}
         handleChange={handleChange}
       />
-      Date:{" "}
-      <input
-        type="text"
-        placeholder={new Date(selectedEntry.dateAdded).toString()}
-        // make this a date picker
-      />
+      <button onClick={handleSave}>Save</button>
     </>
   );
 };

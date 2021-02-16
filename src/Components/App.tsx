@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Route, Switch, useParams } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 import { defaultEntries } from "../constants";
 import { getFromStorage, saveToStorage } from "../storage";
 import MoneyDisplay from "./MoneyDisplay";
@@ -36,7 +36,7 @@ const App: React.FC = () => {
           <EntryList entries={entries} setEntries={setEntries} />
         </Route>
         <Route path="/edit/:id">
-          <EditEntry entries={entries} />
+          <EditEntry entries={entries} setEntries={setEntries} />
         </Route>
       </Switch>
     </div>

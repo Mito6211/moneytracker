@@ -5,7 +5,7 @@ import { defaultFormData } from "../../constants";
 
 import "./index.css";
 
-import { EntryFormData } from "../../types";
+import { EntryFormData, Entry } from "../../types";
 import TypeSelect from "./TypeSelect";
 import IsIncomeSelect from "./IsIncomeSelect";
 import NameInput from "./NameInput";
@@ -37,7 +37,7 @@ const EntryForm: React.FC<Props> = ({ setEntries, setStartingAmount }) => {
     for (const item in formData) {
       if (item === "") return;
     }
-    setEntries((prev: any) => [
+    setEntries((prev: Entry[]) => [
       ...prev,
       {
         id: nanoid(),
