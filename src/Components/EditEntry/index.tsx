@@ -65,6 +65,13 @@ const EditEntry: React.FC<Props> = ({ entries, setEntries }) => {
 
   return (
     <>
+      <button
+        onClick={() => {
+          history.push("/");
+        }}
+      >
+        {"<- Back"}
+      </button>
       {error ? (
         <div>Failed to get entry</div>
       ) : (
