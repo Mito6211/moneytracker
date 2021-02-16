@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 import { Entry, EntryFormData } from "../../types";
 
 import { abbreviateMoney } from "../../utils";
+import { defaultFormData } from "../../constants";
 
 import TypeSelect from "../EntryForm/TypeSelect";
 import IsIncomeSelect from "../EntryForm/IsIncomeSelect";
@@ -14,19 +15,27 @@ type Props = {
   setEntries: React.Dispatch<any>;
 };
 const EditEntry: React.FC<Props> = ({ entries, setEntries }) => {
+  const history = useHistory();
   const { id } = useParams<{ id: string }>();
+  let error;
 
   const selectedEntryIndex = entries.findIndex((entry) => entry.id === id);
+  if (selectedEntryIndex === -1) {
+    error = true;
+  }
+
   const selectedEntry = entries[selectedEntryIndex];
 
-  const [entryData, setEntryData] = useState<EntryFormData>({
-    entryName: selectedEntry?.name!,
-    entryType: selectedEntry?.type!,
-    entryIsIncome: selectedEntry?.isIncome!,
-    entryAmount: selectedEntry?.amount.toString()!,
-  });
-
-  if (!selectedEntry) return <div>Failed to get entry</div>;
+  const [entryData, setEntryData] = useState<EntryFormData>(
+    error
+      ? defaultFormData
+      : {
+          entryName: selectedEntry.name,
+          entryType: selectedEntry.type,
+          entryIsIncome: selectedEntry.isIncome,
+          entryAmount: selectedEntry.amount.toString(),
+        }
+  );
 
   const handleChange = (e: any) => {
     let { name, value } = e.target;
@@ -50,34 +59,45 @@ const EditEntry: React.FC<Props> = ({ entries, setEntries }) => {
       isIncome: entryData.entryIsIncome,
     };
     setEntries(newEntries);
+
+    history.push("/");
   };
 
   return (
     <>
-      <h2
-        key={selectedEntry?.id}
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      >
-        <span>{selectedEntry?.name}</span>
-        &nbsp;-&nbsp;
-        <span className={selectedEntry?.isIncome ? "green" : "red"}>
-          ${abbreviateMoney(selectedEntry!.amount)}
-        </span>
-        &nbsp;
-        <span className="small">({selectedEntry?.type})</span>
-      </h2>
-      <NameInput value={entryData.entryName} handleChange={handleChange} />
-      <AmountInput value={entryData.entryAmount} handleChange={handleChange} />
-      <TypeSelect value={entryData.entryType} handleChange={handleChange} />
-      <IsIncomeSelect
-        value={entryData.entryIsIncome}
-        handleChange={handleChange}
-      />
-      <button onClick={handleSave}>Save</button>
+      {error ? (
+        <div>Failed to get entry</div>
+      ) : (
+        <>
+          <h2
+            key={selectedEntry?.id}
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            <span>{selectedEntry?.name}</span>
+            &nbsp;-&nbsp;
+            <span className={selectedEntry?.isIncome ? "green" : "red"}>
+              ${abbreviateMoney(selectedEntry!.amount)}
+            </span>
+            &nbsp;
+            <span className="small">({selectedEntry?.type})</span>
+          </h2>
+          <NameInput value={entryData.entryName} handleChange={handleChange} />
+          <AmountInput
+            value={entryData.entryAmount}
+            handleChange={handleChange}
+          />
+          <TypeSelect value={entryData.entryType} handleChange={handleChange} />
+          <IsIncomeSelect
+            value={entryData.entryIsIncome}
+            handleChange={handleChange}
+          />
+          <button onClick={handleSave}>Save</button>
+        </>
+      )}
     </>
   );
 };
