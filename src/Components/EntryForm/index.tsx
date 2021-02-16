@@ -6,6 +6,10 @@ import { defaultFormData } from "../../constants";
 import "./index.css";
 
 import { EntryFormData } from "../../types";
+import TypeSelect from "./TypeSelect";
+import IsIncomeSelect from "./IsIncomeSelect";
+import NameInput from "./NameInput";
+import AmountInput from "./AmountInput";
 
 type Props = {
   setEntries: React.Dispatch<any>;
@@ -51,44 +55,18 @@ const EntryForm: React.FC<Props> = ({ setEntries, setStartingAmount }) => {
     <>
       <form className="form-entry" onSubmit={handleSubmit}>
         <div>
-          <input
-            type="text"
-            placeholder="Name"
-            className="form-entry-name"
-            name="entryName"
-            value={formData.entryName}
-            onChange={handleChange}
-          />
-          <input
-            type="number"
-            placeholder="$"
-            className="form-entry-amount"
-            name="entryAmount"
+          <NameInput value={formData.entryName} handleChange={handleChange} />
+          <AmountInput
             value={formData.entryAmount}
-            onChange={handleChange}
+            handleChange={handleChange}
           />
         </div>
         <div>
-          <select
-            className="form-entry-select"
-            name="entryType"
-            value={formData.entryType}
-            onChange={handleChange}
-          >
-            <option value="Cash">Cash</option>
-            <option value="Bank Account">Bank Account</option>
-            <option value="Crypto">Crypto</option>
-            <option value="Gift Card">Gift Card</option>
-          </select>
-          <select
-            className="form-entry-select"
-            name="entryIsIncome"
-            value={formData.entryIsIncome.toString()}
-            onChange={handleChange}
-          >
-            <option value="true">Income</option>
-            <option value="false">Expense</option>
-          </select>
+          <TypeSelect value={formData.entryType} handleChange={handleChange} />
+          <IsIncomeSelect
+            value={formData.entryIsIncome}
+            handleChange={handleChange}
+          />
           <button>Add</button>
         </div>
       </form>

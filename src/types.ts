@@ -12,5 +12,10 @@ export type EntryFormData = {
   entryType: string;
   entryIsIncome: boolean;
   entryAmount: string;
-  startingAmount: string;
+  startingAmount?: string;
+};
+
+export type EntryFormProps = {
+  value: string | boolean;
+  handleChange: (e: any) => void;
 };
