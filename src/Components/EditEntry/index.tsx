@@ -65,44 +65,72 @@ const EditEntry: React.FC<Props> = ({ entries, setEntries }) => {
 
   return (
     <>
-      <button
-        onClick={() => {
-          history.push("/");
-        }}
-      >
-        {"<- Back"}
-      </button>
       {error ? (
-        <div>Failed to get entry</div>
+        <div>
+          <button
+            onClick={() => {
+              history.push("/");
+            }}
+          >
+            {"<- Back"}
+          </button>
+          Failed to get entry
+        </div>
       ) : (
         <>
           <h2
             key={selectedEntry?.id}
             style={{
               display: "flex",
-              justifyContent: "center",
+              justifyContent: "space-between",
               alignItems: "center",
             }}
           >
-            <span>{selectedEntry.name}</span>
-            &nbsp;-&nbsp;
-            <span className={selectedEntry.isIncome ? "green" : "red"}>
-              ${abbreviateMoney(selectedEntry.amount)}
-            </span>
-            &nbsp;
-            <span className="small">({selectedEntry.type})</span>
+            <button
+              onClick={() => {
+                history.push("/");
+              }}
+            >
+              {"<- Back"}
+            </button>
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+              }}
+            >
+              <span>{selectedEntry.name}</span>
+              &nbsp;-&nbsp;
+              <span className={selectedEntry.isIncome ? "green" : "red"}>
+                ${abbreviateMoney(selectedEntry.amount)}
+              </span>
+              &nbsp;
+              <span className="small">({selectedEntry.type})</span>
+            </div>
+            <button onClick={handleSave}>Save</button>
           </h2>
-          <NameInput value={entryData.entryName} handleChange={handleChange} />
-          <AmountInput
-            value={entryData.entryAmount}
-            handleChange={handleChange}
-          />
-          <TypeSelect value={entryData.entryType} handleChange={handleChange} />
-          <IsIncomeSelect
-            value={entryData.entryIsIncome}
-            handleChange={handleChange}
-          />
-          <button onClick={handleSave}>Save</button>
+          <div style={{ display: "flex", flexDirection: "row" }}>
+            <NameInput
+              value={entryData.entryName}
+              handleChange={handleChange}
+              style={{ flex: 4 }}
+            />
+            <AmountInput
+              value={entryData.entryAmount}
+              handleChange={handleChange}
+              style={{ flex: 2 }}
+            />
+            <TypeSelect
+              value={entryData.entryType}
+              handleChange={handleChange}
+              style={{ flex: 1 }}
+            />
+            <IsIncomeSelect
+              value={entryData.entryIsIncome}
+              handleChange={handleChange}
+              style={{ flex: 1 }}
+            />
+          </div>
         </>
       )}
     </>

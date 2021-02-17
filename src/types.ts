@@ -22,4 +22,5 @@ export type EntryFormProps = {
       | React.FormEvent<HTMLFormElement>
       | React.ChangeEvent<HTMLSelectElement | HTMLInputElement>
   ) => void;
+  style?: React.CSSProperties;
 };

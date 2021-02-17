@@ -1,7 +1,11 @@
 import React from "react";
 import { EntryFormProps } from "../../types";
 
-const NameInput: React.FC<EntryFormProps> = ({ value, handleChange }) => {
+const NameInput: React.FC<EntryFormProps> = ({
+  value,
+  handleChange,
+  style = {},
+}) => {
   return (
     <input
       type="text"
@@ -10,6 +14,7 @@ const NameInput: React.FC<EntryFormProps> = ({ value, handleChange }) => {
       name="entryName"
       value={value.toString()}
       onChange={handleChange}
+      style={style}
     />
   );
 };
