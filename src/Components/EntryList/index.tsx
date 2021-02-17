@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { MdClose } from "react-icons/md";
+import moment from "moment";
 import { abbreviateMoney } from "../../utils";
 
 import "./index.scss";
@@ -34,7 +35,9 @@ const MoneyDisplay: React.FC<Props> = ({ entries, setEntries }) => {
             ${abbreviateMoney(entry.amount)}
           </span>
           &nbsp;
-          <span className="small">({entry.type})</span>
+          <span className="small">
+            ({entry.type} - {moment(entry.dateAdded).fromNow()})
+          </span>
         </div>
       ))}
     </div>
