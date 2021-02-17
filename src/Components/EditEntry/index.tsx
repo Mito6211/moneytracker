@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useParams, useHistory } from "react-router-dom";
+import moment from "moment";
 import { Entry, EntryFormData } from "../../types";
 
 import { abbreviateMoney } from "../../utils";
@@ -99,17 +100,31 @@ const EditEntry: React.FC<Props> = ({ entries, setEntries }) => {
                 alignItems: "center",
               }}
             >
-              <span>{selectedEntry.name}</span>
-              &nbsp;-&nbsp;
-              <span className={selectedEntry.isIncome ? "green" : "red"}>
-                ${abbreviateMoney(selectedEntry.amount)}
-              </span>
-              &nbsp;
-              <span className="small">({selectedEntry.type})</span>
+              {selectedEntry.name}
             </div>
             <button onClick={handleSave}>Save</button>
           </h2>
-          <div style={{ display: "flex", flexDirection: "row" }}>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
+            <span>({selectedEntry.type})</span>
+            <span className={selectedEntry.isIncome ? "green" : "red"}>
+              ${abbreviateMoney(selectedEntry.amount)}
+            </span>
+            <span>{moment(selectedEntry.dateAdded).fromNow()}</span>
+          </div>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              margin: "30px 0px",
+            }}
+          >
             <NameInput
               value={entryData.entryName}
               handleChange={handleChange}
