@@ -6,6 +6,7 @@ import MoneyDisplay from "./MoneyDisplay";
 import EntryForm from "./EntryForm";
 import EntryList from "./EntryList";
 import EditEntry from "./EditEntry";
+import Calculations from "./Calculations";
 
 import "./App.scss";
 
@@ -37,6 +38,9 @@ const App: React.FC = () => {
         </Route>
         <Route path="/edit/:id">
           <EditEntry entries={entries} setEntries={setEntries} />
+        </Route>
+        <Route path="/calculations">
+          <Calculations></Calculations>
         </Route>
       </Switch>
     </div>
