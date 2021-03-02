@@ -36,7 +36,10 @@ const Calculations: React.FC = () => {
     }
   };
 
-  React.useEffect(() => console.log(formData), [formData]);
+  const result =
+    formData.principal *
+    (1 + formData.interestRate / formData.annualCompoundFrequency) **
+      (formData.annualCompoundFrequency * formData.years); // P(1 + r/n)^nt
 
   return (
     <>
@@ -88,6 +91,7 @@ const Calculations: React.FC = () => {
           />
         </div>
       </form>
+      <div>Total: ${result.toFixed(2)}</div>
     </>
   );
 };
