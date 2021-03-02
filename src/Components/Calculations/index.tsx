@@ -15,7 +15,9 @@ const Calculations: React.FC = () => {
     years: 0,
   });
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+  ) => {
     const { name, value } = e.target;
     console.log(value.substring(1));
     const numberOrDecimal = /^[0-9.]*$/;
@@ -71,13 +73,17 @@ const Calculations: React.FC = () => {
           <label htmlFor="annualCompoundFrequency">
             Annual Compound Frequency:{" "}
           </label>
-          <input
+          <select
             id="annualCompoundFrequency"
             name="annualCompoundFrequency"
             value={formData.annualCompoundFrequency}
             onChange={handleChange}
-            type="number"
-          />
+          >
+            <option value="1">Daily</option>
+            <option value="7">Weekly</option>
+            <option value="30">Monthly</option>
+            <option value="365">Yearly</option>
+          </select>
         </div>
 
         <div>
