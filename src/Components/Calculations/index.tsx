@@ -38,9 +38,10 @@ const Calculations: React.FC = () => {
     }
   };
 
+  const interestRate = formData.interestRate / 100;
   const result =
     formData.principal *
-    (1 + formData.interestRate / formData.annualCompoundFrequency) **
+    (1 + interestRate / formData.annualCompoundFrequency) **
       (formData.annualCompoundFrequency * formData.years); // P(1 + r/n)^nt
 
   return (
