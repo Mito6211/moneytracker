@@ -3,8 +3,14 @@
 .top-money-display {
   display: flex;
   align-items: center;
+  justify-content: center;
   width: fit-content;
   margin: 30px auto;
+  padding: 20px 0px;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.25);
+  background-color: $dark;
+  border-radius: 10px;
+  width: 100%;
 }
 
 .income,
@@ -33,6 +39,8 @@
 @media (max-width: 900px) {
   .top-money-display {
     flex-direction: column;
+    margin-top: 0px;
+    border-radius: 0px;
   }
 
   .arrow {
